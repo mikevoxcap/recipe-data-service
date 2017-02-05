@@ -1,4 +1,4 @@
-package com.michaelhoffmantech.recipemanager;
+package com.michaelhoffmantech.recipemanager.recipedataservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
