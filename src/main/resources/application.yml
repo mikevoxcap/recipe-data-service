@@ -1,0 +1,45 @@
+# Spring boot configuration for recipe data service
+# Configurations can be overridden by the Spring profile specified 
+# through the file name (application-local.yml is the local profile)
+server:
+  contextPath: /recipe-data-service
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://recipemanagerdb.csfyxrnxo3gn.us-east-2.rds.amazonaws.com:5432/recipemanager
+    username: recipemanager
+    password: Rec1pemanager!
+    driver-class-name: org.postgresql.Driver
+
+  jta:
+    enabled: false
+  
+  jpa:
+    show_sql: true
+    properties: 
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate.generate_statistics: true
+
+security:
+  basic:
+    enabled: false
+
+application:
+  swagger:
+    title: Recipe Data Service
+    description: Recipe Data Service API documentation
+    version: 0.0.1
+    termsOfServiceUrl: "http://www.michaelhoffmaninc.com"
+    contact: "mike@michaelhoffmaninc.com"
+    license: "GNU GENERAL PUBLIC LICENSE 3.0"
+    licenseUrl: "https://www.gnu.org/licenses/gpl-3.0.en.html"
+
+  startup:
+    openUrlEnabled: false
+    
+logging:
+  file: recipe-data-service.log
+  

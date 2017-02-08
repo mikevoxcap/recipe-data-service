@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+	<!-- https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-logging.html -->
+	<!-- http://stackoverflow.com/questions/32023060/how-to-configure-logback-under-spring -->
+	<!-- https://github.com/spring-projects/spring-boot/tree/master/spring-boot/src/main/resources/org/springframework/boot/logging/logback -->
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+
+	<!-- Spring Profile specific configuration -->
+	<springProfile name="local">
+		<root level="INFO" />
+		<logger name="org.michaelhoffmantech" level="DEBUG" />
+
+		<logger name="org.springframework" level="INFO" />
+		<logger name="org.springframework.boot" level="INFO"/>
+		<logger name="org.springframework.security" level="DEBUG" />
+		<logger name="org.springframework.security.web.util.matcher" level="INFO" />
+		<logger name="org.springframework.security.web.FilterChainProxy" level="INFO" />
+		<logger name="org.springframework.web" level="DEBUG"/>
+
+		<logger name="org.apache.tomcat" level="INFO" />
+		<logger name="springfox" level="INFO" />
+	</springProfile>
+</configuration>
