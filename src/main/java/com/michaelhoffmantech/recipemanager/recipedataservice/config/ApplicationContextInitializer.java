@@ -32,7 +32,7 @@ public class ApplicationContextInitializer implements
       if (StringUtils.isBlank(envActiveProfile)
             && StringUtils.isBlank(propActiveProfile)) {
          LOG.info("Setting the default profile as local");
-         System.setProperty("spring.profiles.active", SpringProfile.LOCAL.getProfile());
+         System.setProperty("spring.profiles.active", "local");
       }
    }
 
