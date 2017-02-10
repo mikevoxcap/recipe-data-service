@@ -16,7 +16,21 @@ spring:
     username: recipemanager
     password: Rec1pemanager!
     driver-class-name: org.postgresql.Driver
+
+  jpa:
+    generate-ddl: true
+    hibernate: 
+      ddl-auto: create-drop
+    show_sql: true
     
 application:
   startup:
     openUrlEnabled: true
+
+flyway: 
+  check-location: true
+  enabled: true
+  locations: 
+    - classpath:db/migration/postgresql
+  schemas:
+    - recipe

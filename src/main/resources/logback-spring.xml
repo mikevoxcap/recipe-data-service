@@ -7,7 +7,7 @@
 
 	<!-- Spring Profile specific configuration -->
 	<springProfile name="local">
-		<root level="INFO" />
+		<root level="DEBUG" />
 		<logger name="org.michaelhoffmantech" level="DEBUG" />
 
 		<logger name="org.springframework" level="INFO" />

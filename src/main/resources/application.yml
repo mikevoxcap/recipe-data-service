@@ -7,21 +7,25 @@ server:
 
 spring:
   datasource:
+    driver-class-name: org.postgresql.Driver
+    password: Rec1pemanager!
     url: jdbc:postgresql://recipemanagerdb.csfyxrnxo3gn.us-east-2.rds.amazonaws.com:5432/recipemanager
     username: recipemanager
-    password: Rec1pemanager!
-    driver-class-name: org.postgresql.Driver
 
   jta:
     enabled: false
   
   jpa:
-    show_sql: true
+    generate-ddl: false
+    hibernate: 
+      ddl-auto: none
     properties: 
       hibernate.cache.use_second_level_cache: false
       hibernate.cache.use_query_cache: false
+      hibernate.default_schema: recipe
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
       hibernate.generate_statistics: true
+    show_sql: false
 
 security:
   basic:
@@ -29,13 +33,13 @@ security:
 
 application:
   swagger:
-    title: Recipe Data Service
-    description: Recipe Data Service API documentation
-    version: 0.0.1
-    termsOfServiceUrl: "http://www.michaelhoffmaninc.com"
     contact: "mike@michaelhoffmaninc.com"
+    description: Recipe Data Service API documentation
     license: "GNU GENERAL PUBLIC LICENSE 3.0"
     licenseUrl: "https://www.gnu.org/licenses/gpl-3.0.en.html"
+    termsOfServiceUrl: "http://www.michaelhoffmaninc.com"
+    title: Recipe Data Service
+    version: 0.0.1
 
   startup:
     openUrlEnabled: false
