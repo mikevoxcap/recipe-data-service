@@ -1,45 +1,17 @@
 /* DDL initialization for the database */
-CREATE TABLE recipe."Users" (
-	user_id serial NOT NULL, -- Unique ID of the user
-	first_name varchar(100) NOT NULL, -- First name of the user
-	last_name varchar(100) NOT NULL, -- Last name of the user
-	date_of_birth date NOT NULL, -- Birth date of the user
-	login_id varchar(100) NOT NULL, -- Login ID of the user
-	password varchar(50) NOT NULL, -- Password of the user
-	email_address varchar(150) NOT NULL, -- Email address of the user
-	created_by varchar(100) NOT NULL, -- User created
-	created_timestamp timestamp NOT NULL, -- Created timestamp
-	PRIMARY KEY (user_id)
-);
-
-COMMENT ON COLUMN recipe."Users".user_id IS 'Unique ID of the user';
-COMMENT ON COLUMN recipe."Users".first_name IS 'First name of the user';
-COMMENT ON COLUMN recipe."Users".last_name IS 'Last name of the user';
-COMMENT ON COLUMN recipe."Users".date_of_birth IS 'Birth date of the user';
-COMMENT ON COLUMN recipe."Users".login_id IS 'Login ID of the user';
-COMMENT ON COLUMN recipe."Users".password IS 'Password of the user';
-COMMENT ON COLUMN recipe."Users".email_address IS 'Email address of the user';
-COMMENT ON COLUMN recipe."Users".created_by IS 'Created by user';
-COMMENT ON COLUMN recipe."Users".created_timestamp IS 'Created timestamp by the user';
-
 CREATE TABLE recipe."Recipe" (
 	recipe_id serial NOT NULL, -- Unique ID of the recipe
-	user_id integer NOT NULL, -- Unique ID of the user
-	name varchar(150) NOT NULL, -- Recipe name
+	user_id integer NOT NULL, -- ID of the user
+	recipe_name varchar(150) NOT NULL, -- Recipe name
 	is_active boolean NOT NULL, -- Flag if recipe is actively on the site
 	created_by varchar(100) NOT NULL, -- User created
 	created_timestamp timestamp NOT NULL, -- Created timestamp
 	PRIMARY KEY (recipe_id)	
 ); 
 
-ALTER TABLE recipe."Recipe" 
-	ADD CONSTRAINT recipe_fk_1
-	FOREIGN KEY (user_id) 
-	REFERENCES recipe."Users" (user_id);
-
 COMMENT ON COLUMN recipe."Recipe".recipe_id IS 'Unique ID of the recipe';
 COMMENT ON COLUMN recipe."Recipe".user_id IS 'Unique ID of the user';
-COMMENT ON COLUMN recipe."Recipe".name IS 'Name of the recipe';
+COMMENT ON COLUMN recipe."Recipe".recipe_name IS 'Name of the recipe';
 COMMENT ON COLUMN recipe."Recipe".is_active IS 'Is active flag of the recipe';
 COMMENT ON COLUMN recipe."Recipe".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."Recipe".created_timestamp IS 'Created timestamp by the user';
@@ -70,7 +42,7 @@ CREATE TABLE recipe."RecipeInstruction" (
 	recipe_instruction_id serial NOT NULL, -- Unique ID of the recipe instruction
 	recipe_id integer NOT NULL, -- Unique ID of the recipe assigned attached to this instruction
 	instruction_value text NOT NULL, -- Text value of the instruction
-	sequence integer NOT NULL, -- Sequence number of the instruction 
+	sequence_number integer NOT NULL, -- Sequence number of the instruction 
 	created_by varchar(100) NOT NULL, -- User created
 	created_timestamp timestamp NOT NULL, -- Created timestamp
 	PRIMARY KEY (recipe_instruction_id)	
@@ -84,7 +56,7 @@ ALTER TABLE recipe."RecipeInstruction"
 COMMENT ON COLUMN recipe."RecipeInstruction".recipe_instruction_id IS 'Unique ID of the recipe instruction';
 COMMENT ON COLUMN recipe."RecipeInstruction".recipe_id IS 'Unique ID of the recipe assinged to the instruction';
 COMMENT ON COLUMN recipe."RecipeInstruction".instruction_value IS 'Text value of the instruction';
-COMMENT ON COLUMN recipe."RecipeInstruction".sequence IS 'Sequence number of the instruction';
+COMMENT ON COLUMN recipe."RecipeInstruction".sequence_number IS 'Sequence number of the instruction';
 COMMENT ON COLUMN recipe."RecipeInstruction".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."RecipeInstruction".created_timestamp IS 'Created timestamp by the user';
 
@@ -92,7 +64,9 @@ CREATE TABLE recipe."RecipeIngredient" (
 	recipe_ingredient_id serial NOT NULL, -- Unique ID of the recipe ingredient
 	recipe_id integer NOT NULL, -- Unique ID of the recipe assigned attached to this ingredient
 	ingredient_type text NOT NULL, -- Text value of the ingredient type
-	ingredient_measurement integer NOT NULL, -- Measurement for the ingredient 
+	ingredient_measurement text, -- Measurement for the ingredient
+	ingredient_amount text, -- Amount for the ingredient 
+	sequence_number integer NOT NULL, -- Sequence number of the instruction
 	created_by varchar(100) NOT NULL, -- User created
 	created_timestamp timestamp NOT NULL, -- Created timestamp
 	PRIMARY KEY (recipe_ingredient_id)	
@@ -107,6 +81,8 @@ COMMENT ON COLUMN recipe."RecipeIngredient".recipe_ingredient_id IS 'Unique ID o
 COMMENT ON COLUMN recipe."RecipeIngredient".recipe_id IS 'Unique ID of the recipe assinged to the ingredient';
 COMMENT ON COLUMN recipe."RecipeIngredient".ingredient_type IS 'Type of ingredient';
 COMMENT ON COLUMN recipe."RecipeIngredient".ingredient_measurement IS 'Measurement for the ingredient';
+COMMENT ON COLUMN recipe."RecipeIngredient".ingredient_amount IS 'Amount for the ingredient';
+COMMENT ON COLUMN recipe."RecipeIngredient".sequence_number IS 'Sequence number for the ingredient';
 COMMENT ON COLUMN recipe."RecipeIngredient".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."RecipeIngredient".created_timestamp IS 'Created timestamp by the user';
 
@@ -123,11 +99,6 @@ CREATE TABLE recipe."UserRecipeReview" (
 
 ALTER TABLE recipe."UserRecipeReview" 
 	ADD CONSTRAINT user_recipe_review_fk_1
-	FOREIGN KEY (user_id) 
-	REFERENCES recipe."Users" (user_id);
-
-ALTER TABLE recipe."UserRecipeReview" 
-	ADD CONSTRAINT user_recipe_review_fk_2
 	FOREIGN KEY (recipe_id) 
 	REFERENCES recipe."Recipe" (recipe_id);
 

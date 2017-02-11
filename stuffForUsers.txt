@@ -1,0 +1,36 @@
+I want to try to keep users separate from recipes so I am pulling that detail into its own service. 
+
+DDL for users:
+
+CREATE TABLE recipe."Users" (
+	user_id serial NOT NULL, -- Unique ID of the user
+	first_name varchar(100) NOT NULL, -- First name of the user
+	last_name varchar(100) NOT NULL, -- Last name of the user
+	date_of_birth date NOT NULL, -- Birth date of the user
+	login_id varchar(100) NOT NULL, -- Login ID of the user
+	password varchar(50) NOT NULL, -- Password of the user
+	email_address varchar(150) NOT NULL, -- Email address of the user
+	created_by varchar(100) NOT NULL, -- User created
+	created_timestamp timestamp NOT NULL, -- Created timestamp
+	PRIMARY KEY (user_id)
+);
+
+COMMENT ON COLUMN recipe."Users".user_id IS 'Unique ID of the user';
+COMMENT ON COLUMN recipe."Users".first_name IS 'First name of the user';
+COMMENT ON COLUMN recipe."Users".last_name IS 'Last name of the user';
+COMMENT ON COLUMN recipe."Users".date_of_birth IS 'Birth date of the user';
+COMMENT ON COLUMN recipe."Users".login_id IS 'Login ID of the user';
+COMMENT ON COLUMN recipe."Users".password IS 'Password of the user';
+COMMENT ON COLUMN recipe."Users".email_address IS 'Email address of the user';
+COMMENT ON COLUMN recipe."Users".created_by IS 'Created by user';
+COMMENT ON COLUMN recipe."Users".created_timestamp IS 'Created timestamp by the user';
+
+This is the DML:
+
+INSERT INTO recipe."Users" (first_name, last_name, date_of_birth, login_id, password, email_address, created_by, created_timestamp) 
+	VALUES ('Admin', 'Admin', '1977-01-01', 'admin', 'admin', 'mike@michaelhoffmaninc.com', 'admin', TIMESTAMP '2017-02-02 01:01:01');
+INSERT INTO recipe."Users" (first_name, last_name, date_of_birth, login_id, password, email_address, created_by, created_timestamp) 
+	VALUES ('Daryl', 'Dixon', '1962-04-20', 'ddixon', 'password', 'ddixontest123@gmail.com', 'admin', TIMESTAMP '2017-02-02 01:01:01');
+INSERT INTO recipe."Users" (first_name, last_name, date_of_birth, login_id, password, email_address, created_by, created_timestamp) 
+	VALUES ('Merle', 'Dixon', '1960-11-04', 'mdixon', 'password', 'mdixontest123@gmail.com', 'admin', TIMESTAMP '2017-02-02 01:01:01');
+	
