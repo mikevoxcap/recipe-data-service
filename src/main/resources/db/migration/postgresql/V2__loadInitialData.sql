@@ -48,6 +48,6 @@ INSERT INTO recipe."RecipeInstruction" (recipe_id, instruction_value, sequence_n
 	VALUES ((SELECT recipe_id from recipe."Recipe" WHERE recipe_name = 'Boiled Water'), 
 		'Once water has reached a boil, turn stove heat off', 4, 'admin', '2017-02-02 01:01:01');
 		
-INSERT INTO recipe."UserRecipeReview" (user_id, recipe_id, review_rating, review_comment, created_by, created_timestamp) 
+INSERT INTO recipe."RecipeReview" (user_id, recipe_id, review_rating, review_comment, created_by, created_timestamp) 
 	VALUES (3, (SELECT recipe_id from recipe."Recipe" WHERE recipe_name = 'Boiled Water'), 1, 
 		'Tried this on one of them walkers and it just made him mad, this recipe is horrible!', 'admin', '2017-02-02 01:01:01');

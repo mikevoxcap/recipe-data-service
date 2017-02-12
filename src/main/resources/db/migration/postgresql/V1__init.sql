@@ -86,29 +86,29 @@ COMMENT ON COLUMN recipe."RecipeIngredient".sequence_number IS 'Sequence number 
 COMMENT ON COLUMN recipe."RecipeIngredient".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."RecipeIngredient".created_timestamp IS 'Created timestamp by the user';
 
-CREATE TABLE recipe."UserRecipeReview" (
-	user_recipe_review_id serial NOT NULL, -- Unique ID of the recipe user review
+CREATE TABLE recipe."RecipeReview" (
+	recipe_review_id serial NOT NULL, -- Unique ID of the recipe user review
 	user_id integer NOT NULL, -- Unique ID of the user for this recipe review
 	recipe_id integer NOT NULL, -- Unique ID of the recipe for the user review
 	review_rating integer, -- Rating review number by the user
 	review_comment text, -- Review comment by the user 
 	created_by varchar(100) NOT NULL, -- User created
 	created_timestamp timestamp NOT NULL, -- Created timestamp
-	PRIMARY KEY (user_recipe_review_id)		
+	PRIMARY KEY (recipe_review_id)		
 );
 
-ALTER TABLE recipe."UserRecipeReview" 
-	ADD CONSTRAINT user_recipe_review_fk_1
+ALTER TABLE recipe."RecipeReview" 
+	ADD CONSTRAINT recipe_review_fk_1
 	FOREIGN KEY (recipe_id) 
 	REFERENCES recipe."Recipe" (recipe_id);
 
-COMMENT ON COLUMN recipe."UserRecipeReview".user_recipe_review_id IS 'Unique ID of the user recipe review';
-COMMENT ON COLUMN recipe."UserRecipeReview".user_id IS 'Unique ID of the user for this review';
-COMMENT ON COLUMN recipe."UserRecipeReview".recipe_id IS 'Unique ID of the recipe for this review';
-COMMENT ON COLUMN recipe."UserRecipeReview".review_rating IS 'Rating of the user review';
-COMMENT ON COLUMN recipe."UserRecipeReview".review_comment IS 'Comment by the user for the review';
-COMMENT ON COLUMN recipe."UserRecipeReview".created_by IS 'Created by user';
-COMMENT ON COLUMN recipe."UserRecipeReview".created_timestamp IS 'Created timestamp by the user';
+COMMENT ON COLUMN recipe."RecipeReview".recipe_review_id IS 'Unique ID of the user recipe review';
+COMMENT ON COLUMN recipe."RecipeReview".user_id IS 'Unique ID of the user for this review';
+COMMENT ON COLUMN recipe."RecipeReview".recipe_id IS 'Unique ID of the recipe for this review';
+COMMENT ON COLUMN recipe."RecipeReview".review_rating IS 'Rating of the user review';
+COMMENT ON COLUMN recipe."RecipeReview".review_comment IS 'Comment by the user for the review';
+COMMENT ON COLUMN recipe."RecipeReview".created_by IS 'Created by user';
+COMMENT ON COLUMN recipe."RecipeReview".created_timestamp IS 'Created timestamp by the user';
 
 CREATE TABLE recipe."RecipePicture" (
 	recipe_picture_id serial NOT NULL, -- Unique ID of the recipe picture
