@@ -26,12 +26,12 @@ public class Recipe implements java.io.Serializable {
 
    private static final long serialVersionUID = -2396413094160491864L;
 
-   private int recipeId;
+   private Integer recipeId;
    private String createdBy;
    private Date createdTimestamp;
    private boolean isActive;
    private String recipeName;
-   private int userId;
+   private Integer userId;
    private Set<RecipeCategory> recipeCategories = new HashSet<RecipeCategory>(0);
    private Set<RecipeInstruction> recipeInstructions = new HashSet<RecipeInstruction>(0);
    private Set<RecipeIngredient> recipeIngredients = new HashSet<RecipeIngredient>(0);
@@ -42,8 +42,8 @@ public class Recipe implements java.io.Serializable {
    public Recipe() {
    }
 
-   public Recipe(int recipeId, String createdBy, Date createdTimestamp, boolean isActive,
-         String recipeName, int userId) {
+   public Recipe(Integer recipeId, String createdBy, Date createdTimestamp,
+         boolean isActive, String recipeName, Integer userId) {
       this.recipeId = recipeId;
       this.createdBy = createdBy;
       this.createdTimestamp = createdTimestamp;
@@ -52,9 +52,9 @@ public class Recipe implements java.io.Serializable {
       this.userId = userId;
    }
 
-   public Recipe(int recipeId, String createdBy, Date createdTimestamp, boolean isActive,
-         String recipeName, int userId, Set<RecipeCategory> recipeCategories,
-         Set<RecipeInstruction> recipeInstructions,
+   public Recipe(Integer recipeId, String createdBy, Date createdTimestamp,
+         boolean isActive, String recipeName, Integer userId,
+         Set<RecipeCategory> recipeCategories, Set<RecipeInstruction> recipeInstructions,
          Set<RecipeIngredient> recipeIngredients, Set<RecipePicture> recipePictures,
          Set<RecipeAttribute> recipeAttributes, Set<RecipeReview> recipeReviews) {
       this.recipeId = recipeId;
@@ -76,11 +76,11 @@ public class Recipe implements java.io.Serializable {
          sequenceName = "recipe_recipe_id_seq", allocationSize = 1)
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_recipe_id_seq")
    @Column(name = "recipe_id", unique = true, nullable = false)
-   public int getRecipeId() {
+   public Integer getRecipeId() {
       return this.recipeId;
    }
 
-   public void setRecipeId(int recipeId) {
+   public void setRecipeId(Integer recipeId) {
       this.recipeId = recipeId;
    }
 
@@ -122,11 +122,11 @@ public class Recipe implements java.io.Serializable {
    }
 
    @Column(name = "user_id", nullable = false)
-   public int getUserId() {
+   public Integer getUserId() {
       return this.userId;
    }
 
-   public void setUserId(int userId) {
+   public void setUserId(Integer userId) {
       this.userId = userId;
    }
 

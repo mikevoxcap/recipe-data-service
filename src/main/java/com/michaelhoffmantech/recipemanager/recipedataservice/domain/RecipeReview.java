@@ -25,19 +25,19 @@ public class RecipeReview implements java.io.Serializable {
 
    private static final long serialVersionUID = -7117495012693342988L;
 
-   private int recipeReviewId;
+   private Integer recipeReviewId;
    private Recipe recipe;
    private String createdBy;
    private Date createdTimestamp;
    private String reviewComment;
    private Integer reviewRating;
-   private int userId;
+   private Integer userId;
 
    public RecipeReview() {
    }
 
-   public RecipeReview(int recipeReviewId, Recipe recipe, String createdBy,
-         Date createdTimestamp, int userId) {
+   public RecipeReview(Integer recipeReviewId, Recipe recipe, String createdBy,
+         Date createdTimestamp, Integer userId) {
       this.recipeReviewId = recipeReviewId;
       this.recipe = recipe;
       this.createdBy = createdBy;
@@ -45,8 +45,9 @@ public class RecipeReview implements java.io.Serializable {
       this.userId = userId;
    }
 
-   public RecipeReview(int recipeReviewId, Recipe recipe, String createdBy,
-         Date createdTimestamp, String reviewComment, Integer reviewRating, int userId) {
+   public RecipeReview(Integer recipeReviewId, Recipe recipe, String createdBy,
+         Date createdTimestamp, String reviewComment, Integer reviewRating,
+         Integer userId) {
       this.recipeReviewId = recipeReviewId;
       this.recipe = recipe;
       this.createdBy = createdBy;
@@ -62,11 +63,11 @@ public class RecipeReview implements java.io.Serializable {
    @GeneratedValue(strategy = GenerationType.SEQUENCE,
          generator = "recipe_review_recipe_review_id_seq")
    @Column(name = "recipe_review_id", unique = true, nullable = false)
-   public int getRecipeReviewId() {
+   public Integer getRecipeReviewId() {
       return this.recipeReviewId;
    }
 
-   public void setRecipeReviewId(int recipeReviewId) {
+   public void setRecipeReviewId(Integer recipeReviewId) {
       this.recipeReviewId = recipeReviewId;
    }
 
@@ -118,11 +119,11 @@ public class RecipeReview implements java.io.Serializable {
    }
 
    @Column(name = "user_id", nullable = false)
-   public int getUserId() {
+   public Integer getUserId() {
       return this.userId;
    }
 
-   public void setUserId(int userId) {
+   public void setUserId(Integer userId) {
       this.userId = userId;
    }
 

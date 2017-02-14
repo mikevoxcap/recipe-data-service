@@ -25,7 +25,7 @@ public class RecipeAttribute implements java.io.Serializable {
 
    private static final long serialVersionUID = 7940283521556252203L;
 
-   private int recipeAttributeId;
+   private Integer recipeAttributeId;
    private Recipe recipe;
    private String attributeName;
    private String attributeValue;
@@ -35,7 +35,7 @@ public class RecipeAttribute implements java.io.Serializable {
    public RecipeAttribute() {
    }
 
-   public RecipeAttribute(int recipeAttributeId, Recipe recipe, String attributeName,
+   public RecipeAttribute(Integer recipeAttributeId, Recipe recipe, String attributeName,
          String attributeValue, String createdBy, Date createdTimestamp) {
       this.recipeAttributeId = recipeAttributeId;
       this.recipe = recipe;
@@ -51,11 +51,11 @@ public class RecipeAttribute implements java.io.Serializable {
    @GeneratedValue(strategy = GenerationType.SEQUENCE,
          generator = "recipe_attribute_recipe_attribute_id_seq")
    @Column(name = "recipe_attribute_id", unique = true, nullable = false)
-   public int getRecipeAttributeId() {
+   public Integer getRecipeAttributeId() {
       return this.recipeAttributeId;
    }
 
-   public void setRecipeAttributeId(int recipeAttributeId) {
+   public void setRecipeAttributeId(Integer recipeAttributeId) {
       this.recipeAttributeId = recipeAttributeId;
    }
 

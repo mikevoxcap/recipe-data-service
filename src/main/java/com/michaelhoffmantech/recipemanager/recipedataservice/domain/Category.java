@@ -26,7 +26,7 @@ public class Category implements java.io.Serializable {
 
    private static final long serialVersionUID = 2485576496694675489L;
 
-   private int categoryId;
+   private Integer categoryId;
    private String categoryName;
    private String createdBy;
    private Date createdTimestamp;
@@ -35,7 +35,7 @@ public class Category implements java.io.Serializable {
    public Category() {
    }
 
-   public Category(int categoryId, String categoryName, String createdBy,
+   public Category(Integer categoryId, String categoryName, String createdBy,
          Date createdTimestamp) {
       this.categoryId = categoryId;
       this.categoryName = categoryName;
@@ -43,7 +43,7 @@ public class Category implements java.io.Serializable {
       this.createdTimestamp = createdTimestamp;
    }
 
-   public Category(int categoryId, String categoryName, String createdBy,
+   public Category(Integer categoryId, String categoryName, String createdBy,
          Date createdTimestamp, Set<RecipeCategory> recipeCategories) {
       this.categoryId = categoryId;
       this.categoryName = categoryName;
@@ -58,11 +58,11 @@ public class Category implements java.io.Serializable {
    @GeneratedValue(strategy = GenerationType.SEQUENCE,
          generator = "category_category_id_seq")
    @Column(name = "category_id", unique = true, nullable = false)
-   public int getCategoryId() {
+   public Integer getCategoryId() {
       return this.categoryId;
    }
 
-   public void setCategoryId(int categoryId) {
+   public void setCategoryId(Integer categoryId) {
       this.categoryId = categoryId;
    }
 

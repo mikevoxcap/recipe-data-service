@@ -25,20 +25,20 @@ public class RecipeIngredient implements java.io.Serializable {
 
    private static final long serialVersionUID = -6219355201572086875L;
 
-   private int recipeIngredientId;
+   private Integer recipeIngredientId;
    private Recipe recipe;
    private String createdBy;
    private Date createdTimestamp;
    private String ingredientAmount;
    private String ingredientMeasurement;
    private String ingredientType;
-   private int sequenceNumber;
+   private Integer sequenceNumber;
 
    public RecipeIngredient() {
    }
 
-   public RecipeIngredient(int recipeIngredientId, Recipe recipe, String createdBy,
-         Date createdTimestamp, String ingredientType, int sequenceNumber) {
+   public RecipeIngredient(Integer recipeIngredientId, Recipe recipe, String createdBy,
+         Date createdTimestamp, String ingredientType, Integer sequenceNumber) {
       this.recipeIngredientId = recipeIngredientId;
       this.recipe = recipe;
       this.createdBy = createdBy;
@@ -47,9 +47,9 @@ public class RecipeIngredient implements java.io.Serializable {
       this.sequenceNumber = sequenceNumber;
    }
 
-   public RecipeIngredient(int recipeIngredientId, Recipe recipe, String createdBy,
+   public RecipeIngredient(Integer recipeIngredientId, Recipe recipe, String createdBy,
          Date createdTimestamp, String ingredientAmount, String ingredientMeasurement,
-         String ingredientType, int sequenceNumber) {
+         String ingredientType, Integer sequenceNumber) {
       this.recipeIngredientId = recipeIngredientId;
       this.recipe = recipe;
       this.createdBy = createdBy;
@@ -66,11 +66,11 @@ public class RecipeIngredient implements java.io.Serializable {
    @GeneratedValue(strategy = GenerationType.SEQUENCE,
          generator = "recipe_ingredient_recipe_ingredient_id_seq")
    @Column(name = "recipe_ingredient_id", unique = true, nullable = false)
-   public int getRecipeIngredientId() {
+   public Integer getRecipeIngredientId() {
       return this.recipeIngredientId;
    }
 
-   public void setRecipeIngredientId(int recipeIngredientId) {
+   public void setRecipeIngredientId(Integer recipeIngredientId) {
       this.recipeIngredientId = recipeIngredientId;
    }
 
@@ -131,11 +131,11 @@ public class RecipeIngredient implements java.io.Serializable {
    }
 
    @Column(name = "sequence_number", nullable = false)
-   public int getSequenceNumber() {
+   public Integer getSequenceNumber() {
       return this.sequenceNumber;
    }
 
-   public void setSequenceNumber(int sequenceNumber) {
+   public void setSequenceNumber(Integer sequenceNumber) {
       this.sequenceNumber = sequenceNumber;
    }
 

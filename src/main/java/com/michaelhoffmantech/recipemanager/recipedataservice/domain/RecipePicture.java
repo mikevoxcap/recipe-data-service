@@ -25,7 +25,7 @@ public class RecipePicture implements java.io.Serializable {
 
    private static final long serialVersionUID = -7711408379610249918L;
 
-   private int recipePictureId;
+   private Integer recipePictureId;
    private Recipe recipe;
    private String createdBy;
    private Date createdTimestamp;
@@ -35,7 +35,7 @@ public class RecipePicture implements java.io.Serializable {
    public RecipePicture() {
    }
 
-   public RecipePicture(int recipePictureId, Recipe recipe, String createdBy,
+   public RecipePicture(Integer recipePictureId, Recipe recipe, String createdBy,
          Date createdTimestamp, String pictureName, byte[] recipePicture) {
       this.recipePictureId = recipePictureId;
       this.recipe = recipe;
@@ -51,11 +51,11 @@ public class RecipePicture implements java.io.Serializable {
    @GeneratedValue(strategy = GenerationType.SEQUENCE,
          generator = "recipe_picture_recipe_picture_id_seq")
    @Column(name = "recipe_picture_id", unique = true, nullable = false)
-   public int getRecipePictureId() {
+   public Integer getRecipePictureId() {
       return this.recipePictureId;
    }
 
-   public void setRecipePictureId(int recipePictureId) {
+   public void setRecipePictureId(Integer recipePictureId) {
       this.recipePictureId = recipePictureId;
    }
 

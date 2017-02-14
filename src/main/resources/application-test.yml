@@ -1,0 +1,19 @@
+# Spring boot configuration for recipe data service test profile
+# This is used as the default profile if one is not specified at runtime
+server:
+  port: 9000
+
+spring:
+  profiles:
+    active: test
+    
+  datasource:
+    url: jdbc:postgresql://localhost:5432/recipemanager
+    username: recipemanager
+    password: Rec1pemanager!
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    generate-ddl: true
+    show_sql: true
+    
