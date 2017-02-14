@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-schema="recipe" match-name="category"/>
+  <table-filter match-schema="recipe" match-name="recipe"/>
+  <table-filter match-schema="recipe" match-name="recipeattribute"/>
+  <table-filter match-schema="recipe" match-name="recipecategory"/>
+  <table-filter match-schema="recipe" match-name="recipeingredient"/>
+  <table-filter match-schema="recipe" match-name="recipeinstruction"/>
+  <table-filter match-schema="recipe" match-name="recipepicture"/>
+  <table-filter match-schema="recipe" match-name="recipereview"/>
+</hibernate-reverse-engineering>
