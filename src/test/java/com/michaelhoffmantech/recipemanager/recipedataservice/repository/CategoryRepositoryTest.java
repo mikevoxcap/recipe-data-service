@@ -13,22 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.michaelhoffmantech.recipemanager.recipedataservice.RecipeDataServiceApplication;
 import com.michaelhoffmantech.recipemanager.recipedataservice.domain.Category;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { RecipeDataServiceApplication.class })
-@WebAppConfiguration
-@ActiveProfiles(profiles = { "test" })
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-@Rollback
 public class CategoryRepositoryTest {
 
    @Autowired

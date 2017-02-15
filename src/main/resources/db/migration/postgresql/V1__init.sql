@@ -1,12 +1,11 @@
 /* DDL initialization for the database */
 CREATE TABLE recipe."recipe" (
-	recipe_id serial NOT NULL, -- Unique ID of the recipe
+	recipe_id SERIAL PRIMARY KEY, -- Unique ID of the recipe
 	user_id integer NOT NULL, -- ID of the user
 	recipe_name varchar(150) NOT NULL, -- Recipe name
 	is_active boolean NOT NULL, -- Flag if recipe is actively on the site
 	created_by varchar(100) NOT NULL, -- User created
-	created_timestamp timestamp NOT NULL, -- Created timestamp
-	PRIMARY KEY (recipe_id)	
+	created_timestamp timestamp NOT NULL -- Created timestamp
 ); 
 
 COMMENT ON COLUMN recipe."recipe".recipe_id IS 'Unique ID of the recipe';
@@ -17,13 +16,12 @@ COMMENT ON COLUMN recipe."recipe".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."recipe".created_timestamp IS 'Created timestamp by the user';
 
 CREATE TABLE recipe."recipe_attribute" (
-	recipe_attribute_id serial NOT NULL, -- Unique ID of the recipe attribute
+	recipe_attribute_id SERIAL PRIMARY KEY, -- Unique ID of the recipe attribute
 	recipe_id integer NOT NULL, -- Unique ID of the recipe assigned attached to this attribute
 	attribute_name varchar(250) NOT NULL, -- Name of the recipe attribute
 	attribute_value varchar(1000) NOT NULL, -- Value of the recipe attribute 
 	created_by varchar(100) NOT NULL, -- User created
-	created_timestamp timestamp NOT NULL, -- Created timestamp
-	PRIMARY KEY (recipe_attribute_id)	
+	created_timestamp timestamp NOT NULL -- Created timestamp
 ); 
 
 ALTER TABLE recipe."recipe_attribute" 
@@ -39,13 +37,12 @@ COMMENT ON COLUMN recipe."recipe_attribute".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."recipe_attribute".created_timestamp IS 'Created timestamp by the user';
 
 CREATE TABLE recipe."recipe_instruction" (
-	recipe_instruction_id serial NOT NULL, -- Unique ID of the recipe instruction
+	recipe_instruction_id SERIAL PRIMARY KEY, -- Unique ID of the recipe instruction
 	recipe_id integer NOT NULL, -- Unique ID of the recipe assigned attached to this instruction
 	instruction_value text NOT NULL, -- Text value of the instruction
 	sequence_number integer NOT NULL, -- Sequence number of the instruction 
 	created_by varchar(100) NOT NULL, -- User created
-	created_timestamp timestamp NOT NULL, -- Created timestamp
-	PRIMARY KEY (recipe_instruction_id)	
+	created_timestamp timestamp NOT NULL -- Created timestamp
 ); 
 
 ALTER TABLE recipe."recipe_instruction" 
@@ -61,15 +58,14 @@ COMMENT ON COLUMN recipe."recipe_instruction".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."recipe_instruction".created_timestamp IS 'Created timestamp by the user';
 
 CREATE TABLE recipe."recipe_ingredient" (
-	recipe_ingredient_id serial NOT NULL, -- Unique ID of the recipe ingredient
+	recipe_ingredient_id SERIAL PRIMARY KEY, -- Unique ID of the recipe ingredient
 	recipe_id integer NOT NULL, -- Unique ID of the recipe assigned attached to this ingredient
 	ingredient_type text NOT NULL, -- Text value of the ingredient type
 	ingredient_measurement text, -- Measurement for the ingredient
 	ingredient_amount text, -- Amount for the ingredient 
 	sequence_number integer NOT NULL, -- Sequence number of the instruction
 	created_by varchar(100) NOT NULL, -- User created
-	created_timestamp timestamp NOT NULL, -- Created timestamp
-	PRIMARY KEY (recipe_ingredient_id)	
+	created_timestamp timestamp NOT NULL -- Created timestamp
 ); 
 
 ALTER TABLE recipe."recipe_ingredient" 
@@ -87,14 +83,13 @@ COMMENT ON COLUMN recipe."recipe_ingredient".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."recipe_ingredient".created_timestamp IS 'Created timestamp by the user';
 
 CREATE TABLE recipe."recipe_review" (
-	recipe_review_id serial NOT NULL, -- Unique ID of the recipe user review
+	recipe_review_id SERIAL PRIMARY KEY, -- Unique ID of the recipe user review
 	user_id integer NOT NULL, -- Unique ID of the user for this recipe review
 	recipe_id integer NOT NULL, -- Unique ID of the recipe for the user review
 	review_rating integer, -- Rating review number by the user
 	review_comment text, -- Review comment by the user 
 	created_by varchar(100) NOT NULL, -- User created
-	created_timestamp timestamp NOT NULL, -- Created timestamp
-	PRIMARY KEY (recipe_review_id)		
+	created_timestamp timestamp NOT NULL -- Created timestamp
 );
 
 ALTER TABLE recipe."recipe_review" 
@@ -111,13 +106,12 @@ COMMENT ON COLUMN recipe."recipe_review".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."recipe_review".created_timestamp IS 'Created timestamp by the user';
 
 CREATE TABLE recipe."recipe_picture" (
-	recipe_picture_id serial NOT NULL, -- Unique ID of the recipe picture
+	recipe_picture_id SERIAL PRIMARY KEY, -- Unique ID of the recipe picture
 	recipe_id integer NOT NULL, -- Unique ID of the recipe for this picture
 	picture_name varchar(250) NOT NULL, -- Name of the recipe picture
 	recipe_picture bytea NOT NULL, -- Binary value of the recipe picture
 	created_by varchar(100) NOT NULL, -- User created
-	created_timestamp timestamp NOT NULL, -- Created timestamp
-	PRIMARY KEY (recipe_picture_id)			
+	created_timestamp timestamp NOT NULL -- Created timestamp
 );
 
 ALTER TABLE recipe."recipe_picture" 
@@ -133,11 +127,10 @@ COMMENT ON COLUMN recipe."recipe_picture".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."recipe_picture".created_timestamp IS 'Created timestamp by the user';
 
 CREATE TABLE recipe."category" (
-	category_id serial NOT NULL, -- Unique ID of the category
+	category_id SERIAL PRIMARY KEY, -- Unique ID of the category
 	category_name varchar(200) NOT NULL, -- Name of the category
 	created_by varchar(100) NOT NULL, -- User created
-	created_timestamp timestamp NOT NULL, -- Created timestamp
-	PRIMARY KEY (category_id)			
+	created_timestamp timestamp NOT NULL -- Created timestamp
 );
 
 COMMENT ON COLUMN recipe."category".category_id IS 'Unique ID of the category';
@@ -146,12 +139,11 @@ COMMENT ON COLUMN recipe."category".created_by IS 'Created by user';
 COMMENT ON COLUMN recipe."category".created_timestamp IS 'Created timestamp by the user';
 
 CREATE TABLE recipe."recipe_category" (
-	recipe_category_id serial NOT NULL, -- Unique ID of the recipe category
+	recipe_category_id SERIAL PRIMARY KEY, -- Unique ID of the recipe category
 	recipe_id integer NOT NULL, -- Unique ID of the recipe for this category
 	category_id integer NOT NULL, -- Unique ID of the category
 	created_by varchar(100) NOT NULL, -- User created
-	created_timestamp timestamp NOT NULL, -- Created timestamp
-	PRIMARY KEY (recipe_category_id)
+	created_timestamp timestamp NOT NULL -- Created timestamp
 );
 
 ALTER TABLE recipe."recipe_category" 
