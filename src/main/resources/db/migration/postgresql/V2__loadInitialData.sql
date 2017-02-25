@@ -1,10 +1,10 @@
 /* DML for inserting initial data for DB */
-INSERT INTO recipe."recipe" (user_id, recipe_name, is_active, created_by, created_timestamp) 
-	VALUES (2, 'Boiled Water', true, 'admin', '2017-02-02 01:01:01');
-	
 INSERT INTO recipe."category" (category_name, created_by, created_timestamp) 
 	VALUES ('Simple', 'admin', '2017-02-02 01:01:01');
-	
+
+INSERT INTO recipe."recipe" (user_id, recipe_name, is_active, created_by, created_timestamp) 
+	VALUES (2, 'Boiled Water', true, 'admin', '2017-02-02 01:01:01');
+		
 INSERT INTO recipe."recipe_attribute" (recipe_id, attribute_name, attribute_value, created_by, created_timestamp)
 	VALUES ((SELECT recipe_id from recipe."recipe" WHERE recipe_name = 'Boiled Water'), 'Preparation Time', '1', 'admin', '2017-02-02 01:01:01');
 INSERT INTO recipe."recipe_attribute" (recipe_id, attribute_name, attribute_value, created_by, created_timestamp)

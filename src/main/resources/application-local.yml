@@ -23,6 +23,3 @@ spring:
 application:
   startup:
     openUrlEnabled: true
-
-flyway: 
-  enabled: false
